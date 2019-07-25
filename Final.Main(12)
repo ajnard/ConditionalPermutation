@@ -1,0 +1,178 @@
+#include <fstream>
+#include <vector>
+
+using namespace std;
+int main()
+{
+	std::vector<int> Permutations(12);
+	ofstream fout("PermsLink_12Test.txt");
+	for (int State0Add = 0; State0Add < 13; State0Add++)
+	{
+		Permutations[0] = State0Add;
+		for (int State0ToZero = 1; State0ToZero < State0Add; State0ToZero++)
+		{
+			Permutations[State0ToZero] = 0;
+		}
+		if (State0Add == 0 || State0Add == 12)
+		{
+			fout << Permutations[0] << '\t' << Permutations[1] << '\t' << Permutations[2] << '\t' << Permutations[3] << '\t' << Permutations[4] << '\t' << Permutations[5] << '\t' << Permutations[6] << '\t' << Permutations[7] << '\t' << Permutations[8] << '\t' << Permutations[9] << '\t' << Permutations[10] << '\t' << Permutations[11] << endl;
+			continue;
+			Permutations[0] = 0;
+		}
+		for (int State1Add = 0; State1Add < 13 - State0Add; State1Add++)
+		{
+			Permutations[State0Add] = State1Add;
+			for (int State1ToZero = State0Add + 1; State1ToZero < State0Add + State1Add; State1ToZero++)
+			{
+				Permutations[State1ToZero] = 0;
+			}
+			if (State1Add == 0 || State0Add + State1Add == 12)
+			{
+				fout << Permutations[0] << '\t' << Permutations[1] << '\t' << Permutations[2] << '\t' << Permutations[3] << '\t' << Permutations[4] << '\t' << Permutations[5] << '\t' << Permutations[6] << '\t' << Permutations[7] << '\t' << Permutations[8] << '\t' << Permutations[9] << '\t' << Permutations[10] << '\t' << Permutations[11] << endl;
+				continue;
+				Permutations[State0Add] = 0;
+			}
+			for (int State2Add = 0; State2Add < 13 - State0Add - State1Add; State2Add++)
+			{
+				Permutations[State1Add + State0Add] = State2Add;
+				for (int State2ToZero = State1Add + State0Add + 1; State2ToZero < State0Add + State1Add + State2Add; State2ToZero++)
+				{
+					Permutations[State2ToZero] = 0;
+				}
+				if (State2Add == 0 || State0Add + State1Add + State2Add == 12)
+				{
+					fout << Permutations[0] << '\t' << Permutations[1] << '\t' << Permutations[2] << '\t' << Permutations[3] << '\t' << Permutations[4] << '\t' << Permutations[5] << '\t' << Permutations[6] << '\t' << Permutations[7] << '\t' << Permutations[8] << '\t' << Permutations[9] << '\t' << Permutations[10] << '\t' << Permutations[11] << endl;
+					continue;
+					Permutations[State1Add + State0Add] = 0;
+				}
+				for (int State3Add = 0; State3Add < 13 - State0Add - State1Add - State2Add; State3Add++)
+				{
+					Permutations[State2Add + State1Add + State0Add] = State3Add;
+					for (int State3ToZero = State2Add + State1Add + State0Add + 1; State3ToZero < State0Add + State1Add + State2Add + State3Add; State3ToZero++)
+					{
+						Permutations[State3ToZero] = 0;
+					}
+					if (State3Add == 0 || State0Add + State1Add + State2Add + State3Add == 12)
+					{
+						fout << Permutations[0] << '\t' << Permutations[1] << '\t' << Permutations[2] << '\t' << Permutations[3] << '\t' << Permutations[4] << '\t' << Permutations[5] << '\t' << Permutations[6] << '\t' << Permutations[7] << '\t' << Permutations[8] << '\t' << Permutations[9] << '\t' << Permutations[10] << '\t' << Permutations[11] << endl;
+						continue;
+						Permutations[State2Add + State1Add + State0Add] = 0;
+					}
+					for (int State4Add = 0; State4Add < 13 - State0Add - State1Add - State2Add - State3Add; State4Add++)
+					{
+						Permutations[State3Add + State2Add + State1Add + State0Add] = State4Add;
+						for (int State4ToZero = State3Add + State2Add + State1Add + State0Add + 1; State4ToZero < State0Add + State1Add + State2Add + State3Add + State4Add; State4ToZero++)
+						{
+							Permutations[State4ToZero] = 0;
+						}
+						if (State4Add == 0 || State0Add + State1Add + State2Add + State3Add + State4Add == 12)
+						{
+							fout << Permutations[0] << '\t' << Permutations[1] << '\t' << Permutations[2] << '\t' << Permutations[3] << '\t' << Permutations[4] << '\t' << Permutations[5] << '\t' << Permutations[6] << '\t' << Permutations[7] << '\t' << Permutations[8] << '\t' << Permutations[9] << '\t' << Permutations[10] << '\t' << Permutations[11] << endl;
+							continue;
+							Permutations[State3Add + State2Add + State1Add + State0Add] = 0;
+						}
+						for (int State5Add = 0; State5Add < 13 - State0Add - State1Add - State2Add - State3Add - State4Add; State5Add++)
+						{
+							Permutations[State4Add + State3Add + State2Add + State1Add + State0Add] = State4Add;
+							for (int State5ToZero = State4Add + State3Add + State2Add + State1Add + State0Add + 1; State5ToZero < State0Add + State1Add + State2Add + State3Add + State4Add + State5Add; State5ToZero++)
+							{
+								Permutations[State5ToZero] = 0;
+							}
+							if (State5Add == 0 || State0Add + State1Add + State2Add + State3Add + State4Add + State5Add == 12)
+							{
+								fout << Permutations[0] << '\t' << Permutations[1] << '\t' << Permutations[2] << '\t' << Permutations[3] << '\t' << Permutations[4] << '\t' << Permutations[5] << '\t' << Permutations[6] << '\t' << Permutations[7] << '\t' << Permutations[8] << '\t' << Permutations[9] << '\t' << Permutations[10] << '\t' << Permutations[11] << endl;
+								continue;
+								Permutations[State4Add + State3Add + State2Add + State1Add + State0Add] = 0;
+							}
+							for (int State6Add = 0; State6Add < 13 - State0Add - State1Add - State2Add - State3Add - State4Add - State5Add; State6Add++)
+							{
+								Permutations[State5Add + State4Add + State3Add + State2Add + State1Add + State0Add] = State5Add;
+								for (int State6ToZero = State5Add + State4Add + State3Add + State2Add + State1Add + State0Add + 1; State6ToZero < State0Add + State1Add + State2Add + State3Add + State4Add + State5Add + State6Add; State6ToZero++)
+								{
+									Permutations[State6ToZero] = 0;
+								}
+								if (State6Add == 0 || State0Add + State1Add + State2Add + State3Add + State4Add + State5Add + State6Add == 12)
+								{
+									fout << Permutations[0] << '\t' << Permutations[1] << '\t' << Permutations[2] << '\t' << Permutations[3] << '\t' << Permutations[4] << '\t' << Permutations[5] << '\t' << Permutations[6] << '\t' << Permutations[7] << '\t' << Permutations[8] << '\t' << Permutations[9] << '\t' << Permutations[10] << '\t' << Permutations[11] << endl;
+									continue;
+									Permutations[State5Add + State4Add + State3Add + State2Add + State1Add + State0Add] = 0;
+								}
+								for (int State7Add = 0; State7Add < 13 - State0Add - State1Add - State2Add - State3Add - State4Add - State5Add - State6Add; State7Add++)
+								{
+									Permutations[State6Add + State5Add + State4Add + State3Add + State2Add + State1Add + State0Add] = State6Add;
+									for (int State7ToZero = State6Add + State5Add + State4Add + State3Add + State2Add + State1Add + State0Add + 1; State7ToZero < State0Add + State1Add + State2Add + State3Add + State4Add + State5Add + State6Add + State7Add; State7ToZero++)
+									{
+										Permutations[State7ToZero] = 0;
+									}
+									if (State7Add == 0 || State0Add + State1Add + State2Add + State3Add + State4Add + State5Add + State6Add + State7Add == 12)
+									{
+										fout << Permutations[0] << '\t' << Permutations[1] << '\t' << Permutations[2] << '\t' << Permutations[3] << '\t' << Permutations[4] << '\t' << Permutations[5] << '\t' << Permutations[6] << '\t' << Permutations[7] << '\t' << Permutations[8] << '\t' << Permutations[9] << '\t' << Permutations[10] << '\t' << Permutations[11] << endl;
+										continue;
+										Permutations[State6Add + State5Add + State4Add + State3Add + State2Add + State1Add + State0Add] = 0;
+									}
+									for (int State8Add = 0; State8Add < 13 - State0Add - State1Add - State2Add - State3Add - State4Add - State5Add - State6Add - State7Add; State8Add++)
+									{
+										Permutations[State7Add + State6Add + State5Add + State4Add + State3Add + State2Add + State1Add + State0Add] = State7Add;
+										for (int State8ToZero = State7Add + State6Add + State5Add + State4Add + State3Add + State2Add + State1Add + State0Add + 1; State8ToZero < State0Add + State1Add + State2Add + State3Add + State4Add + State5Add + State6Add + State7Add + State8Add; State8ToZero++)
+										{
+											Permutations[State8ToZero] = 0;
+										}
+										if (State8Add == 0 || State0Add + State1Add + State2Add + State3Add + State4Add + State5Add + State6Add + State7Add + State8Add == 12)
+										{
+											fout << Permutations[0] << '\t' << Permutations[1] << '\t' << Permutations[2] << '\t' << Permutations[3] << '\t' << Permutations[4] << '\t' << Permutations[5] << '\t' << Permutations[6] << '\t' << Permutations[7] << '\t' << Permutations[8] << '\t' << Permutations[9] << '\t' << Permutations[10] << '\t' << Permutations[11] << endl;
+											continue;
+											Permutations[State7Add + State6Add + State5Add + State4Add + State3Add + State2Add + State1Add + State0Add] = 0;
+										}
+										for (int State9Add = 0; State9Add < 13 - State0Add - State1Add - State2Add - State3Add - State4Add - State5Add - State6Add - State7Add - State8Add; State9Add++)
+										{
+											Permutations[State8Add + State7Add + State6Add + State5Add + State4Add + State3Add + State2Add + State1Add + State0Add] = State7Add;
+											for (int State9ToZero = State8Add + State7Add + State6Add + State5Add + State4Add + State3Add + State2Add + State1Add + State0Add + 1; State9ToZero < State0Add + State1Add + State2Add + State3Add + State4Add + State5Add + State6Add + State7Add + State8Add + State9Add; State9ToZero++)
+											{
+												Permutations[State9ToZero] = 0;
+											}
+											if (State9Add == 0 || State0Add + State1Add + State2Add + State3Add + State4Add + State5Add + State6Add + State7Add + State8Add + State9Add == 12)
+											{
+												fout << Permutations[0] << '\t' << Permutations[1] << '\t' << Permutations[2] << '\t' << Permutations[3] << '\t' << Permutations[4] << '\t' << Permutations[5] << '\t' << Permutations[6] << '\t' << Permutations[7] << '\t' << Permutations[8] << '\t' << Permutations[9] << '\t' << Permutations[10] << '\t' << Permutations[11] << endl;
+												continue;
+												Permutations[State8Add + State7Add + State6Add + State5Add + State4Add + State3Add + State2Add + State1Add + State0Add] = 0;
+											}
+											for (int State10Add = 0; State10Add < 13 - State0Add - State1Add - State2Add - State3Add - State4Add - State5Add - State6Add - State7Add - State8Add - State9Add; State10Add++)
+											{
+												Permutations[State9Add + State8Add + State7Add + State6Add + State5Add + State4Add + State3Add + State2Add + State1Add + State0Add] = State8Add;
+												for (int State10ToZero = State9Add + State8Add + State7Add + State6Add + State5Add + State4Add + State3Add + State2Add + State1Add + State0Add + 1; State10ToZero < State0Add + State1Add + State2Add + State3Add + State4Add + State5Add + State6Add + State7Add + State8Add + State9Add + State10Add; State10ToZero++)
+												{
+													Permutations[State10ToZero] = 0;
+												}
+												if (State10Add == 0 || State0Add + State1Add + State2Add + State3Add + State4Add + State5Add + State6Add + State7Add + State8Add + State9Add + State10Add == 12)
+												{
+													fout << Permutations[0] << '\t' << Permutations[1] << '\t' << Permutations[2] << '\t' << Permutations[3] << '\t' << Permutations[4] << '\t' << Permutations[5] << '\t' << Permutations[6] << '\t' << Permutations[7] << '\t' << Permutations[8] << '\t' << Permutations[9] << '\t' << Permutations[10] << '\t' << Permutations[11] << endl;
+													continue;
+													Permutations[State9Add + State8Add + State7Add + State6Add + State5Add + State4Add + State3Add + State2Add + State1Add + State0Add] = 0;
+												}
+												for (int State11Add = 0; State11Add < 13 - State0Add - State1Add - State2Add - State3Add - State4Add - State5Add - State6Add - State7Add - State8Add - State9Add - State10Add; State11Add++)
+												{
+													Permutations[State10Add + State9Add + State8Add + State7Add + State6Add + State5Add + State4Add + State3Add + State2Add + State1Add + State0Add] = State9Add;
+													for (int State11ToZero = State10Add + State9Add + State8Add + State7Add + State6Add + State5Add + State4Add + State3Add + State2Add + State1Add + State0Add + 1; State11ToZero < State0Add + State1Add + State2Add + State3Add + State4Add + State5Add + State6Add + State7Add + State8Add + State9Add + State10Add + State11Add; State11ToZero++)
+													{
+														Permutations[State11ToZero] = 0;
+													}
+													if (State11Add == 0 || State0Add + State1Add + State2Add + State3Add + State4Add + State5Add + State6Add + State7Add + State8Add + State9Add + State10Add + State11Add == 12)
+													{
+														fout << Permutations[0] << '\t' << Permutations[1] << '\t' << Permutations[2] << '\t' << Permutations[3] << '\t' << Permutations[4] << '\t' << Permutations[5] << '\t' << Permutations[6] << '\t' << Permutations[7] << '\t' << Permutations[8] << '\t' << Permutations[9] << '\t' << Permutations[10] << '\t' << Permutations[11] << endl;
+														continue;
+														Permutations[State10Add + State9Add + State8Add + State7Add + State6Add + State5Add + State4Add + State3Add + State2Add + State1Add + State0Add] = 0;
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	return 0;
+}
