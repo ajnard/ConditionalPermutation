@@ -1,0 +1,99 @@
+// ConditionalPermutations.cpp : Defines the entry point for the console application.
+//
+
+#include "stdafx.h"
+#include <vector>
+#include <fstream>
+
+using namespace std;
+
+int main()
+{
+	std::vector<int> Permutations(6);
+	ofstream fout("PermsLink_6Test.txt");
+	for (int State0Add = 0; State0Add < 7; State0Add++)
+	{
+		Permutations[0] = State0Add;
+		for (int State0ToZero = 1; State0ToZero < State0Add; State0ToZero++)
+		{
+			Permutations[State0ToZero] = 0;
+		}
+		if (State0Add == 0 || State0Add == 6)
+		{
+			fout << Permutations[0] << '\t' << Permutations[1] << '\t' << Permutations[2] << '\t' << Permutations[3] << '\t' << Permutations[4] << '\t' << Permutations[5] << endl;
+			continue;
+			Permutations[0] = 0;
+		}
+		for (int State1Add = 0; State1Add < 7 - State0Add; State1Add++)
+		{
+			Permutations[State0Add] = State1Add;
+			for (int State1ToZero = State0Add + 1; State1ToZero < State0Add + State1Add; State1ToZero++)
+			{
+				Permutations[State1ToZero] = 0;
+			}
+			if (State1Add == 0 || State0Add + State1Add == 6)
+			{
+				fout << Permutations[0] << '\t' << Permutations[1] << '\t' << Permutations[2] << '\t' << Permutations[3] << '\t' << Permutations[4] << '\t' << Permutations[5] << endl;
+				continue;
+				Permutations[State0Add] = 0;
+			}
+			for (int State2Add = 0; State2Add < 7 - State0Add - State1Add; State2Add++)
+			{
+				Permutations[State1Add + State0Add] = State2Add;
+				for (int State2ToZero = State1Add + State0Add + 1; State2ToZero < State0Add + State1Add + State2Add; State2ToZero++)
+				{
+					Permutations[State2ToZero] = 0;
+				}
+				if (State2Add == 0 || State0Add + State1Add + State2Add == 6)
+				{
+					fout << Permutations[0] << '\t' << Permutations[1] << '\t' << Permutations[2] << '\t' << Permutations[3] << '\t' << Permutations[4] << '\t' << Permutations[5] << endl;
+					continue;
+					Permutations[State1Add + State0Add] = 0;
+				}
+				for (int State3Add = 0; State3Add < 7 - State0Add - State1Add - State2Add; State3Add++)
+				{
+					Permutations[State2Add + State1Add + State0Add] = State3Add;
+					for (int State3ToZero = State2Add + State1Add + State0Add + 1; State3ToZero < State0Add + State1Add + State2Add + State3Add; State3ToZero++)
+					{
+						Permutations[State3ToZero] = 0;
+					}
+					if (State3Add == 0 || State0Add + State1Add + State2Add + State3Add == 6)
+					{
+						fout << Permutations[0] << '\t' << Permutations[1] << '\t' << Permutations[2] << '\t' << Permutations[3] << '\t' << Permutations[4] << '\t' << Permutations[5] << endl;
+						continue;
+						Permutations[State2Add + State1Add + State0Add] = 0;
+					}
+					for (int State4Add = 0; State4Add < 7 - State0Add - State1Add - State2Add- State3Add; State4Add++)
+					{
+						Permutations[State3Add + State2Add + State1Add + State0Add] = State4Add;
+						for (int State4ToZero = State3Add + State2Add + State1Add + State0Add + 1; State4ToZero < State0Add + State1Add + State2Add + State3Add + State4Add; State4ToZero++)
+						{
+							Permutations[State4ToZero] = 0;
+						}
+						if (State4Add == 0 || State0Add + State1Add + State2Add + State3Add + State4Add == 6)
+						{
+							fout << Permutations[0] << '\t' << Permutations[1] << '\t' << Permutations[2] << '\t' << Permutations[3] << '\t' << Permutations[4] << '\t' << Permutations[5] << endl;
+							continue;
+							Permutations[State3Add + State2Add + State1Add + State0Add] = 0;
+						}
+						for (int State5Add = 0; State5Add < 7 - State0Add - State1Add - State2Add - State3Add - State4Add; State4Add++)
+						{
+							Permutations[State4Add + State3Add + State2Add + State1Add + State0Add] = State4Add;
+							for (int State5ToZero = State4Add + State3Add + State2Add + State1Add + State0Add + 1; State5ToZero < State0Add + State1Add + State2Add + State3Add + State4Add + State5Add; State5ToZero++)
+							{
+								Permutations[State5ToZero] = 0;
+							}
+							if (State5Add == 0 || State0Add + State1Add + State2Add + State3Add + State4Add + State5Add == 6)
+							{
+								fout << Permutations[0] << '\t' << Permutations[1] << '\t' << Permutations[2] << '\t' << Permutations[3] << '\t' << Permutations[4] << '\t' << Permutations[5] << endl;
+								continue;
+								Permutations[State4Add + State3Add + State2Add + State1Add + State0Add] = 0;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
